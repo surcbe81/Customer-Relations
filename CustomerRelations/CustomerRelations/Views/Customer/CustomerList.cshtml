@@ -1,0 +1,49 @@
+﻿    @model IEnumerable<CustomerRelations.Models.Customer>
+
+   @if (Model.Any()) {
+       
+        <table class="gridtable">
+            <tr>
+                <th></th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>EMail</th>
+                <th>Address</th>
+                <th>Telephone</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr style="vertical-align:top;">
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new {id = item.CustomerId}) 
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EMail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AddressLine1)
+                        <br/>
+                        @Html.DisplayFor(modelItem => item.City)
+                        <br/>
+                        @Html.DisplayFor(modelItem => item.State)
+                        @Html.DisplayFor(modelItem => item.ZipCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Telephone)
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    else {  
+        <strong>No Customers were found in the database..</strong>
+    }
+    
+
